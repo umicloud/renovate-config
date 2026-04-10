@@ -1,7 +1,7 @@
 {
   "name": "@umicloud/renovate-config",
   "version": "0.1.0",
-  "description": "Preset for Renovate",
+  "description": "Presets for Renovate",
   "homepage": "https://github.com/umicloud/renovate-config",
   "license": "MIT",
   "repository": {
