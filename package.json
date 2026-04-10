@@ -16,7 +16,7 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "test": "renovate-config-validator default.json",
-    "release": "bumpp && bun publish",
+    "release": "bumpp && bun publish --access public",
     "prepare": "bun run test"
   },
   "devDependencies": {
