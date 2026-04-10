@@ -1,0 +1,25 @@
+{
+  "name": "@umicloud/renovate-config",
+  "version": "0.1.0",
+  "description": "Preset for Renovate",
+  "homepage": "https://github.com/umicloud/renovate-config",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umicloud/renovate-config.git"
+  },
+  "type": "module",
+  "scripts": {
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "validate": "renovate-config-validator default.json",
+    "test": "bun run validate",
+    "release": "standard-version && git push --follow-tags && bun publish",
+    "prepare": "bun run test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "oxfmt": "0.44.0",
+    "renovate": "latest"
+  }
+}
