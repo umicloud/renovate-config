@@ -4,7 +4,7 @@
     "config:best-practices",
     "group:allNonMajor",
     "group:allDigest",
-    "semanticCommitTypeAll(chore)",
+    ":semanticCommitTypeAll(chore)",
     ":automergeDigest",
     ":automergePatch",
     ":enablePreCommit"
