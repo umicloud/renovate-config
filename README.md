@@ -9,5 +9,4 @@ Presets for Renovate
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>umicloud/renovate-config"]
 }
-
 ```
