@@ -20,8 +20,8 @@
     "prepare": "bun run test"
   },
   "devDependencies": {
-    "bumpp": "11.0.1",
-    "oxfmt": "0.44.0",
+    "bumpp": "latest",
+    "oxfmt": "latest",
     "renovate": "latest"
   }
 }
