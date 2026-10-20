@@ -24,6 +24,7 @@
     // Groups
     'group:allNonMajor',
     'group:allDigest',
+    'group:githubArtifactActions',
   ],
 
   // Default range strategy for dependencies.
@@ -54,6 +55,16 @@
 
   // Disable noisy notifications.
   suppressNotifications: ['prEditedNotification'],
+
+  packageRules: [
+    // Pin the version already in use immediately. Waiting to pin would leave
+    // mutable GitHub Action and container references vulnerable to tampering.
+    {
+      description: 'Pin existing dependency references without a cooldown',
+      matchUpdateTypes: ['pinDigest'],
+      minimumReleaseAge: null,
+    },
+  ],
 
   vulnerabilityAlerts: {
     enabled: true,
