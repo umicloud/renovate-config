@@ -1,18 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:best-practices",
-    "group:allNonMajor",
-    "group:allDigest",
-    ":semanticCommitTypeAll(chore)",
-    ":automergeDigest",
-    ":automergePatch",
-    ":enablePreCommit"
-  ],
-  "ignoreDeps": ["node", "bun", "python"],
-  "rangeStrategy": "bump",
-  "labels": ["renovate"],
-  "npm": {
-    "commitMessageTopic": "{{prettyDepType}} {{depName}}"
-  }
+  "extends": ["github>umicloud/renovate-config:preset.json5"]
 }
