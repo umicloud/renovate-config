@@ -1,0 +1,69 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+
+  // Always enable the dependency dashboard.
+  dependencyDashboard: true,
+
+  extends: [
+    // Based on `config:best-practices`
+    //
+    // `:pinDevDependencies` uses a package rule that overrides the desired
+    // top-level `rangeStrategy` settings below.
+    //
+    // `security:minimumReleaseAgeNpm` applies a shorter, npm-specific cooldown
+    // that would override our blanket minimum release age.
+    //
+    // See: https://docs.renovatebot.com/presets-config/#configbest-practices
+    'config:recommended',
+    'docker:pinDigests',
+    // This preset already includes `helpers:pinGitHubActionDigests`.
+    'helpers:pinGitHubActionDigestsToSemver',
+    ':configMigration',
+    ':maintainLockFilesWeekly',
+    'abandonments:recommended',
+    // Groups
+    'group:allNonMajor',
+    'group:allDigest',
+  ],
+
+  // Default range strategy for dependencies.
+  rangeStrategy: 'auto',
+
+  // Enable pre-commit hook updates.
+  'pre-commit': {
+    enabled: true,
+  },
+
+  // Apply a blanket cooldown of 3 days to third-party dependency updates.
+  minimumReleaseAge: '3 days',
+
+  // Fail closed when a registry does not provide a release timestamp.
+  minimumReleaseAgeBehaviour: 'timestamp-required',
+
+  // Do not create a branch or PR until the release has passed its cooldown.
+  internalChecksFilter: 'strict',
+
+  // PR Settings
+  prCreation: 'immediate',
+  prHourlyLimit: 0,
+  prConcurrentLimit: 0,
+
+  // Conventions
+  semanticCommits: 'enabled',
+  addLabels: ['renovate'],
+
+  // Disable noisy notifications.
+  suppressNotifications: ['prEditedNotification'],
+
+  vulnerabilityAlerts: {
+    enabled: true,
+    // The security label already identifies these PRs; keep their titles consistent
+    // with other dependency updates instead of appending `[SECURITY]`.
+    commitMessageSuffix: '',
+    // Do not inherit repository-specific labels that skip release or build checks.
+    labels: ['renovate', 'security'],
+    // Never delay a fix for a known vulnerability behind the release cooldown.
+    minimumReleaseAge: null,
+    vulnerabilityFixStrategy: 'lowest',
+  },
+}
